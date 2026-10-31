@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tyler Jung</title>
+<meta name="description" content="Tyler Jung, Palisades Park, New Jersey. Pre-med student, independent researcher on surgeons’ musculoskeletal injuries, Director of Health Partnerships for THE WAIT, and mixed-media artist.">
+<style>
+:root{
+  --ink:#1f1d1a; --paper:#faf7f1; --paper2:#f1ebdf; --line:#dcd3c2;
+  --ochre:#c98a1b; --ochre-d:#9a6710; --teal:#1f6f6b; --muted:#6b6457;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 Georgia,"Times New Roman",serif}
+a{color:var(--teal)}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:rgba(250,247,241,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+nav .brand{font-weight:bold;letter-spacing:.02em;text-decoration:none;color:var(--ink)}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;flex-wrap:wrap}
+nav li a{text-decoration:none;color:var(--muted);font-size:15px}
+nav li a:hover{color:var(--ochre-d)}
+/* hero */
+.hero{padding:56px 0 40px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero h1{font-size:50px;line-height:1.05;margin:0 0 14px;font-weight:normal}
+.hero h1 b{color:var(--ochre-d)}
+.hero .lead{font-size:20px;color:var(--muted);margin:0 0 22px}
+.hero .where{font-size:15px;color:var(--muted)}
+.hero .art{position:relative}
+.hero .art img{border-radius:6px;box-shadow:0 18px 40px rgba(31,29,26,.18)}
+.hero .art figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.btn{display:inline-block;padding:10px 16px;border-radius:4px;text-decoration:none;font-size:15px;border:1.5px solid var(--ink);color:var(--ink)}
+.btn.fill{background:var(--ink);color:#fff}
+.btn:hover{border-color:var(--ochre-d);color:var(--ochre-d)}
+.btn.fill:hover{background:var(--ochre-d);border-color:var(--ochre-d);color:#fff}
+/* strip */
+.strip{background:var(--ink);color:#fff;padding:26px 0}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.strip .n{font-size:34px;line-height:1;color:var(--ochre)}
+.strip .l{font-size:14px;color:#d9d2c5;margin-top:6px}
+/* sections */
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+section h2{font-size:34px;font-weight:normal;margin:0 0 6px}
+section h2 small{display:block;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ochre-d);margin-bottom:6px}
+.intro{color:var(--muted);max-width:720px;margin:0 0 28px;font-size:18px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.card{background:#fff;border:1px solid var(--line);border-radius:6px;padding:22px 24px;margin-bottom:18px}
+.card h3{margin:0 0 4px;font-size:21px;font-weight:normal}
+.card .when{font-size:14px;color:var(--muted);margin:0 0 10px}
+.card p{margin:0 0 10px}
+.card ul{margin:0;padding-left:20px}
+.card li{margin-bottom:6px}
+.tag{display:inline-block;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);border:1px solid var(--teal);padding:2px 8px;border-radius:3px;margin:0 6px 8px 0}
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gallery figure{margin:0;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.gallery .ph{aspect-ratio:4/5;overflow:hidden;background:var(--paper2)}
+.gallery .ph img{width:100%;height:100%;object-fit:contain;padding:8px;transition:transform .35s}
+.gallery figure:hover .ph img{transform:scale(1.03)}
+.gallery figcaption{padding:12px 14px 14px}
+.gallery .t{font-size:17px;margin:0}
+.gallery .m{font-size:13.5px;color:var(--muted);margin:2px 0 0}
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(20,18,15,.92);display:none;z-index:50;overflow:auto}
+.lb.on{display:block}
+.lb .in{max-width:1100px;margin:30px auto;padding:0 20px;display:grid;grid-template-columns:1.4fr .8fr;gap:28px;align-items:start}
+.lb img{max-height:84vh;width:auto;max-width:100%;margin:0 auto;border-radius:4px}
+.lb .txt{color:#f3eee3}
+.lb .txt h3{font-weight:normal;font-size:26px;margin:0 0 4px}
+.lb .txt .m{color:#bfb6a5;font-size:14px;margin:0 0 16px}
+.lb .txt p{line-height:1.6}
+.lb .x{position:fixed;top:14px;right:18px;color:#fff;font-size:34px;background:none;border:none;cursor:pointer}
+.lb .nv{position:fixed;top:50%;transform:translateY(-50%);color:#fff;font-size:40px;background:none;border:none;cursor:pointer;padding:10px}
+.lb .prev{left:8px}.lb .next{right:8px}
+.vid{position:relative;padding-top:56.25%;margin:0 0 14px;border-radius:4px;overflow:hidden;background:#000}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:18px}
+@media(max-width:820px){.three{grid-template-columns:1fr}}
+.flyers{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.flyers img{border:1px solid var(--line);border-radius:4px}
+@media(max-width:600px){.flyers{grid-template-columns:1fr}}
+/* honors */
+.hon{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;list-style:none;padding:0;margin:0}
+.hon li{padding:10px 0;border-bottom:1px dashed var(--line)}
+.hon li span{display:block;font-size:13.5px;color:var(--muted)}
+/* contact */
+dl{display:grid;grid-template-columns:max-content 1fr;gap:8px 20px;margin:0}
+dt{color:var(--muted)}
+footer{padding:28px 0;font-size:13.5px;color:var(--muted)}
+@media(max-width:820px){
+  .hero{grid-template-columns:1fr;padding-top:34px}
+  .hero h1{font-size:38px}
+  .strip .wrap{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .lb .in{grid-template-columns:1fr}
+  .hon{grid-template-columns:1fr}
+  nav ul{gap:12px}
+  nav li a{font-size:13.5px}
+}
+@media(max-width:520px){.gallery{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top">Tyler Jung</a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#art">Art</a></li>
+    <li><a href="#health">Health</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#swim">Swimming</a></li>
+    <li><a href="#honors">Honors</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div></nav>
+
+<header id="top" class="wrap hero">
+  <div>
+    <h1>I study the body at work, <b>and I paint what I cannot yet explain.</b></h1>
+    <p class="lead">Tyler Jung is a senior in the Pre-Med Academy at Palisades Park Jr./Sr. High School in New Jersey. He is writing a paper on musculoskeletal injuries in surgeons, helped build THE WAIT, a documentary and bilingual card project for Korean elders who put off seeing a doctor, and makes portraits and mixed-media work out of paint, buttons, and wire.</p>
+    <div class="btns">
+      <a class="btn fill" href="#art">See the portfolio</a>
+      <a class="btn" href="https://youtu.be/8lQXujgL2L8" target="_blank" rel="noopener">Watch THE WAIT</a>
+    </div>
+    <p class="where">Palisades Park, New Jersey · Class of 2027 · First-generation college applicant</p>
+  </div>
+  <figure class="art">
+    <img src="images/in-wire-with-the-fox.jpg" alt="In Wire, With The Fox: an orange fox painted in acrylic with colored wire pressed into the canvas">
+    <figcaption>“In Wire, With The Fox,” acrylic on canvas and wire, 18 × 20 in.</figcaption>
+  </figure>
+</header>
+
+<div class="strip"><div class="wrap">
+  <div><div class="n">3 / 123</div><div class="l">class rank, weighted GPA 4.50</div></div>
+  <div><div class="n">300</div><div class="l">THE WAIT bilingual cards donated in NJ and NY</div></div>
+  <div><div class="n">30</div><div class="l">studies reviewed for his paper on surgeons’ injuries</div></div>
+  <div><div class="n">11</div><div class="l">portfolio works in watercolor, pencil, wire, and mixed media</div></div>
+</div></div>
+
+<section id="about"><div class="wrap">
+  <h2><small>About</small>Who I am</h2>
+  <div class="two">
+    <div>
+      <p>I speak Korean at home and English everywhere else, and most of what I have done in high school happens in the gap between those two rooms: carrying questions between Korean elders and the hospitals that do not speak their language, carrying student complaints to the Board of Education, and carrying what I learn in biology onto a canvas when the textbook stops making sense.</p>
+      <p>I plan to study biology and public health on the way to medicine. The question I keep returning to is what work does to a body, whether that body belongs to a surgeon who has stood for ten hours, a swimmer who has trained fifteen, or an elder who has waited months to be seen.</p>
+      <p>At home I help run a household with my mother and my two aunts and look after my younger sister. On Wednesdays we eat at Wendy’s. I am the one who remembers.</p>
+    </div>
+    <div class="card">
+      <h3>Academics</h3>
+      <p class="when">Palisades Park Jr./Sr. High School, Pre-Med Academy</p>
+      <ul>
+        <li>Rank 3 of 123; weighted GPA 4.50</li>
+        <li>13 AP courses by graduation, including AP Biology, AP Chemistry, AP Calculus BC, AP Statistics, AP Psychology, and AP English Literature</li>
+        <li>AP Scholar with Distinction (2026)</li>
+        <li>Honors Biology, Honors Chemistry, Honors Biotechnology / Anatomy &amp; Physiology, Microbiology</li>
+        <li>Dual enrollment: Korean I, Bergen Community College (A)</li>
+        <li>QuestBridge College Prep Scholar (2026); New Jersey Scholars Program Finalist (2026)</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="art"><div class="wrap">
+  <h2><small>Portfolio</small>Faces, animals, and feelings in paint and wire</h2>
+  <p class="intro">Eleven works. I co-founded the People Palette Club, a portrait club that draws people in our community as a way of thanking them, and I have organized three group exhibitions. Click any piece to see it larger with its story.</p>
+  <div class="gallery" id="gal"></div>
+</div></section>
+
+<section id="health"><div class="wrap">
+  <h2><small>Community health</small>THE WAIT, and the hospital side of the hallway</h2>
+  <p class="intro">Why do Korean elders in Bergen County wait out pain instead of seeing a doctor? Language, cost, not knowing which clinic, no ride. The resources already existed. What did not exist was someone standing in the gap to make them findable.</p>
+  <div>
+    <div class="card">
+      <span class="tag">YGLE</span><span class="tag">Documentary</span><span class="tag">Bilingual cards</span>
+      <h3>THE WAIT: Director of Health Partnerships &amp; Programs</h3>
+      <p class="when">Young Global Leaders of the East (YGLE) · documentary released October 30, 2026</p>
+      <div class="vid"><iframe src="https://www.youtube.com/embed/8lQXujgL2L8" title="THE WAIT, a student documentary by YGLE" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+      <p>A documentary and a Korean-English card project about Korean seniors who delay care because of language, cost, lack of information, and transportation. I took the hospital side: I searched local hospitals for free screenings, served as the link between YGLE and the hospitals, and helped design the bilingual cards that point an elder to a screening, an affordable clinic, or an interpreter.</p>
+      <ul>
+        <li>300 cards donated to Korean community organizations in New Jersey and New York, including the Korean American Association of New Jersey</li>
+        <li>Also Vice Director of Leadership Programming for YGLE’s Annual Global Leadership Forum</li>
+      </ul>
+      <div class="btns"><a class="btn" href="https://youtu.be/8lQXujgL2L8" target="_blank" rel="noopener">Watch THE WAIT on YouTube</a></div>
+    </div>
+  </div>
+  <div class="card">
+      <h3>The card and the two flyers</h3>
+      <p class="when">Bilingual materials, medical and dental content reviewed by licensed professionals</p>
+      <p>The card folds into five panels an elder can hand across a front desk: “I need a Korean interpreter,” two hospital-visit panels for symptoms and pain level, a dental panel, and a communication panel. The two flyers list what I found when I searched: free and low-cost health screenings and support services on one side, including the Bergen County cancer screening program (CEED), the Bergen Volunteer Medical Initiative, Holy Name’s Asian Health Services, and hospital Charity Care, and low-cost dental care on the other, from community clinics to the Rutgers dental school student clinics. Each entry says who qualifies, what it costs, the phone number, and whether Korean help is available.</p>
+      <a href="records/THE_WAIT_Card.pdf" target="_blank" rel="noopener"><img src="images/the-wait-card.jpg" alt="THE WAIT bilingual card, five-panel print spread" style="border:1px solid var(--line);border-radius:4px;margin:6px 0 12px"></a>
+      <div class="flyers">
+        <a href="records/THE_WAIT_Screening_Flyers.pdf" target="_blank" rel="noopener"><img src="images/the-wait-flyer-1.jpg" alt="THE WAIT health screening and support services flyer, page 1"></a>
+        <a href="records/THE_WAIT_Screening_Flyers.pdf" target="_blank" rel="noopener"><img src="images/the-wait-flyer-2.jpg" alt="THE WAIT dental care services flyer"></a>
+      </div>
+      <div class="btns">
+        <a class="btn" href="records/THE_WAIT_Card.pdf" target="_blank" rel="noopener">Open the card (PDF)</a>
+        <a class="btn" href="records/THE_WAIT_Screening_Flyers.pdf" target="_blank" rel="noopener">Open the flyers (PDF)</a>
+      </div>
+  </div>
+  <div class="three">
+      <div class="card">
+        <span class="tag">Hospital</span>
+        <h3>Holy Name Medical Center, Junior Volunteer</h3>
+        <p class="when">Central Sterile Supply, grades 11 to 12 · 95 hours</p>
+        <p>Delivering supplies and instrument carts through the hospital for the department that cleans, packs, and sends out what surgeons use. I never saw an operation. I saw the carts come back, and I started wondering about the hands that used them.</p>
+      </div>
+      <div class="card">
+        <span class="tag">Internship</span>
+        <h3>Englewood Hospital, Medical Internship</h3>
+        <p class="when">October 2026 to present</p>
+        <p>My first placement that involves patients rather than carts.</p>
+      </div>
+      <div class="card">
+        <span class="tag">CDHW</span>
+        <h3>Vice Director of Hospital Partnerships, CDHW</h3>
+        <p class="when">Clothing Donations to Help Kids in the World</p>
+        <p>Built hospital partnerships, including Hackensack University Medical Center, to deliver more than $15,000 of new clothing to pediatric patients and their families.</p>
+      </div>
+  </div>
+</div></section>
+
+<section id="research"><div class="wrap">
+  <h2><small>Research and film</small>The body on the other side of the operating table</h2>
+  <div class="two">
+    <div class="card">
+      <span class="tag">Independent research</span><span class="tag">Sole author</span>
+      <h3>Musculoskeletal injuries in surgeons: occupational strain in the operating room and how to prevent it</h3>
+      <p class="when">Grades 11 to 12 · literature review of 30 studies complete, manuscript in progress</p>
+      <p>It started as an argument in biology class about whether the people who heal others need care themselves. I went looking for the evidence and found a profession that wears out the bodies in it: years of standing, bending, holding one awkward position, repeating a precise movement thousands of times. The paper reviews what is known about those injuries and what prevention strategies have evidence behind them. It is unsubmitted and unpublished, and it has already changed the question I came in with.</p>
+    </div>
+    <div class="card">
+      <span class="tag">Documentary</span><span class="tag">Director and producer</span>
+      <h3>Physician Wellness Documentary</h3>
+      <p class="when">Grades 11 to 12</p>
+      <p>Interviews with Holy Name physicians about burnout, built around one premise: doctors take care of us, and we need to take care of them too. The film is the other half of the research paper, the part that a literature review cannot hold.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="leadership"><div class="wrap">
+  <h2><small>Leadership</small>Standing between two groups that do not quite hear each other</h2>
+  <div class="two">
+    <div>
+      <div class="card">
+        <span class="tag">Elected twice</span>
+        <h3>Student Representative, Palisades Park Board of Education</h3>
+        <p class="when">Grades 10 and 11</p>
+        <p>Elected by the student body two years in a row to sit with the Board and bring it what students were not saying out loud, from broken sinks to what the school day actually feels like. The Board President once called me a natural leader; I am still trying to earn it.</p>
+      </div>
+      <div class="card">
+        <span class="tag">VOY</span><span class="tag">App launched April 2026</span>
+        <h3>Vice Director of Product Development, Voices of the Young</h3>
+        <p class="when">Grades 10 to 12</p>
+        <p>Co-built and launched <a href="https://mo-soop.glide.page" target="_blank" rel="noopener">Mo Soop</a>, an anonymous peer-support app that gives students a judgment-free place to be heard, from concept to public launch. For the Finals Relief Project I designed and 3D printed stress-relief clickers, 180 of them donated to a neighboring high school, each one routing its owner to digital mental-health resources.</p>
+        <div class="btns">
+          <a class="btn" href="https://mo-soop.glide.page" target="_blank" rel="noopener">Open Mo Soop</a>
+          <a class="btn" href="https://mo-ri.glide.page" target="_blank" rel="noopener">Open Mo Ri</a>
+        </div>
+      </div>
+      <div class="card">
+        <span class="tag">Co-founder</span>
+        <h3>The People Palette Club, Co-President</h3>
+        <p class="when">Grades 10 to 12</p>
+        <p>A club of student artists who make personalized portraits for people in our community as a way of saying thank you. We held a public exhibition of portraits for the Ridgefield Firefighters.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>School leadership</h3>
+        <ul>
+          <li>National Honor Society, Co-President (grade 12); member (grade 11)</li>
+          <li>Korean Honor Society, Vice President (grade 12); member (grade 11)</li>
+          <li>Class of 2027, Vice President (grade 10); raised $2,000 for the class</li>
+          <li>PPHS Impact Team (grades 9 and 10): selected student leader working with the principal and vice principal; helped get every bathroom refurbished and started the painted quotes on the school’s walls</li>
+          <li>HOSA, Mu Alpha Theta, Pre-Med Academy (grades 9 to 12)</li>
+          <li>Member, National Student Board Association</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Work and service</h3>
+        <ul>
+          <li>Swim instructor, NJ Swimming Group (May 2026 to present): teaching young children to swim</li>
+          <li>Lifeguard, Palisades Park Swim Club (summer 2024)</li>
+          <li>King Youth Choir (grades 9 to 11): performances in New York, Pennsylvania, and Connecticut</li>
+          <li>Tutor, Walk Alongside; LiNK North Jersey</li>
+          <li>President’s Volunteer Service Award, Gold, for more than 300 hours of service</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="swim"><div class="wrap">
+  <h2><small>Swimming</small>Four varsity years, six club years, eleven to fifteen hours a week in season</h2>
+  <div class="two">
+    <div class="card">
+      <h3>Leonia / Palisades Park Varsity Swim Team</h3>
+      <p class="when">Grades 9 to 12</p>
+      <ul>
+        <li>Undefeated NJIC Conference Champions and team state semifinalists (grade 11)</li>
+        <li>Two Honorable Mention swim awards (grade 11)</li>
+        <li>Boys Swimming Coaches Award (grade 9)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Club swimming</h3>
+      <p class="when">Six years</p>
+      <ul>
+        <li>Short Course and Long Course Gold Championship (grades 9 and 10)</li>
+        <li>Two gold medals at the 22nd Korean American National Sports Festival (grade 9)</li>
+      </ul>
+      <p>Eleven to fifteen hours a week in season. Most of what I know about discomfort, and about getting back in the next morning anyway, I learned in the pool.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="honors"><div class="wrap">
+  <h2><small>Honors</small>Recognition</h2>
+  <ul class="hon">
+    <li>John Locke Institute Global Essay Prize, Shortlist <span>Science &amp; Technology category, 2026</span></li>
+    <li>New Jersey Scholars Program, Finalist <span>2026</span></li>
+    <li>AP Scholar with Distinction <span>College Board, 2026</span></li>
+    <li>Scholastic Writing Awards, Honorable Mention <span>2026</span></li>
+    <li>College Board National Recognition Program <span>First-Generation Recognition and School Recognition, 2025</span></li>
+    <li>QuestBridge College Prep Scholar <span>2026</span></li>
+    <li>“The Creative Artist” Art Award <span>KSTORY Magazine × GSEF Foundation, grade 9</span></li>
+    <li>President’s Volunteer Service Award, Gold <span>300+ hours</span></li>
+    <li>Principal’s List <span>every marking period, grades 9 to 12</span></li>
+  </ul>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <h2><small>Contact</small>Get in touch</h2>
+  <dl>
+    <dt>School</dt><dd>Palisades Park Jr./Sr. High School, Class of 2027</dd>
+    <dt>THE WAIT</dt><dd><a href="https://youtu.be/8lQXujgL2L8" target="_blank" rel="noopener">THE WAIT | 당신의 말이 닿을 때까지 | A Student Documentary by YGLE</a></dd>
+    <dt>Mo Soop</dt><dd><a href="https://mo-soop.glide.page" target="_blank" rel="noopener">mo-soop.glide.page</a></dd>
+    <dt>Mo Ri</dt><dd><a href="https://mo-ri.glide.page" target="_blank" rel="noopener">mo-ri.glide.page</a></dd>
+  </dl>
+</div></section>
+
+<footer><div class="wrap">© 2026 Tyler Jung. All artwork on this site is my own.</div></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <button class="x" id="lbx" aria-label="Close">×</button>
+  <button class="nv prev" id="lbp" aria-label="Previous">‹</button>
+  <button class="nv next" id="lbn" aria-label="Next">›</button>
+  <div class="in"><img id="lbi" src="" alt=""><div class="txt"><h3 id="lbt"></h3><p class="m" id="lbm"></p><p id="lbd"></p></div></div>
+</div>
+
+<script>
+const WORKS=[
+ {f:"toucan",t:"Toucan at a Dull City",m:"Watercolor and pencil · 18 × 20 in.",d:"A vibrant toucan lives in an ordinary city of monotonous conformity, and it is looking for somewhere brighter, somewhere with hope, opportunity, and excitement in it. Sometimes the world seems boring. It is up to each of us to find the thrill and the better beginning."},
+ {f:"resting-now",t:"Resting Now",m:"Watercolor · 20 × 30 in.",d:"An old man rests his face in his hands. The weight of time and stress is pulling him down, so he closes his eyes to feel nothing for a moment and reset."},
+ {f:"water-polo",t:"A First: Water Polo Match",m:"Colored pencil · 20 × 30 in.",d:"The United States against Greece in men’s water polo at Paris 2024. The U.S. lost the match to Greece and still took home the bronze medal. It was the first Olympic water polo game I ever watched, and I drew it so that I would keep the memory."},
+ {f:"surprised-myself",t:"Surprised Myself",m:"Colored pencil · 18 × 20 in.",d:"This is my face the moment I solved my first Rubik’s Cube. A simple hobby, but the feeling was enormous: my eyes opened wide and I could not believe I had done it."},
+ {f:"itchy-spring",t:"Itchy Spring",m:"Colored pencil · 18 × 20 in.",d:"I am severely allergic to pollen, and every spring my eyes itch until I rub them red, which makes me look like a villain. To hide it, I keep my itchy eyes closed for half an hour at a time with a small frown. This is that half hour."},
+ {f:"robot",t:"Robot",m:"Mixed media on canvas · 16 × 12 in.",d:"AI and robots are advancing faster every year, and I am both interested and uneasy. I built this robotic face out of duct tape, with menacing eyes and wires running around it, to hold both feelings at once."},
+ {f:"overwhelmed-tree",t:"An Overwhelmed Tree",m:"Mixed media on canvas · 16 × 12 in.",d:"Inside, it is just an ordinary tree. The outside transforms it: a flood of red and orange paint for deforestation and a warming climate, and colored wires branching out past the canvas for growth beyond what anyone imagined. I think of the tree when I think about the parts of myself, like emotional intelligence, that still have room to grow."},
+ {f:"in-wire-with-the-fox",t:"In Wire, With The Fox",m:"Acrylic on canvas and wire · 18 × 20 in.",d:"A pet fox wrapped in wire. The wire is the mark of my love and connection with the animal, the way I bond with animals at a deeper level than words."},
+ {f:"beautiful-in-color",t:"Beautiful in Color",m:"Mixed media on canvas · 18 × 20 in.",d:"A girl’s face is split apart, and the beauty remains. Around her are dabs of vibrant color for the endless possibilities, opportunities, and ways of expressing herself that are not defined by one right answer. She is building herself, finding her true self, one face at a time."},
+ {f:"wirebound-feelings",t:"Wirebound Feelings",m:"Wire · 20 × 30 in.",d:"A face in wire, for uncertainty. I often feel lost and drowned in stress from school, activities, sports, and clubs. My face and my feelings are imperfect, and the wire holds that better than a clean line would."},
+ {f:"messy-hair",t:"Messy Hair",m:"Wire · 18 × 20 in.",d:"On Sunday mornings I wake up with hair that looks like a pile of skinny curly bows, and my family always makes fun of it. At first the jokes got to me. My love for my hair never faded, though, and over time I realized that what made me special was not the hair but how I approached the situation. I stopped getting mad and started embracing the jumbled, crazy hair."}
+];
+const gal=document.getElementById('gal');
+WORKS.forEach((w,i)=>{
+  const f=document.createElement('figure');
+  f.innerHTML=`<div class="ph"><img loading="lazy" src="images/${w.f}-thumb.jpg" alt="${w.t}"></div><figcaption><p class="t">${w.t}</p><p class="m">${w.m}</p></figcaption>`;
+  f.addEventListener('click',()=>open(i)); gal.appendChild(f);
+});
+const lb=document.getElementById('lb'),li=document.getElementById('lbi'),lt=document.getElementById('lbt'),lm=document.getElementById('lbm'),ld=document.getElementById('lbd');
+let cur=0;
+function open(i){cur=i;const w=WORKS[i];li.src=`images/${w.f}.jpg`;li.alt=w.t;lt.textContent=w.t;lm.textContent=w.m;ld.textContent=w.d;lb.classList.add('on');document.body.style.overflow='hidden';}
+function close(){lb.classList.remove('on');document.body.style.overflow='';}
+document.getElementById('lbx').onclick=close;
+document.getElementById('lbp').onclick=()=>open((cur+WORKS.length-1)%WORKS.length);
+document.getElementById('lbn').onclick=()=>open((cur+1)%WORKS.length);
+lb.addEventListener('click',e=>{if(e.target===lb)close();});
+document.addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')document.getElementById('lbp').click();if(e.key==='ArrowRight')document.getElementById('lbn').click();});
+</script>
+</body>
+</html>
